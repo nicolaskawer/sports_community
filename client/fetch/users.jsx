@@ -1,6 +1,7 @@
 export const fetchUser = async () => {
+  const API_URL = "http://192.168.192.1:3000";
   try {
-    const response = await fetch("http://192.168.50.56:3000/users/");
+    const response = await fetch(`${API_URL}/users/`);
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }

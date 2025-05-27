@@ -18,21 +18,33 @@ const Home = () => {
     getUser();
   }, []);
 
+  const handleAddMedic = (gameId) => {
+    //here we will add what the click on the button will do
+    console.log(`הוספת חובש למשחק עם id ${gameId}`);
+  };
+
   const renderGameItem = ({ item }) => (
     <View style={HomeStyles.gameCard}>
-      <Text style={HomeStyles.gameTitle}>משחק: {item.game}</Text>
+      <Text style={HomeStyles.gameTitle}>משחק: {item.match}</Text>
       <Text style={HomeStyles.gameText}>שעה: {item.time}</Text>
       <Text style={HomeStyles.gameText}>מיקום: {item.location}</Text>
       <Text style={HomeStyles.gameText}>
-        חובש: {item.medic ? "קיים" : "חסר"}
+        חובש: {item.medicAvailable ? "קיים" : "חסר"}
       </Text>
+
+      {!item.medicAvailable && (
+        <TouchableOpacity
+          style={GlobalStyles.listButton}
+          onPress={() => handleAddMedic(item.id)}
+        >
+          <Text style={{ color: "white", fontSize: 16 }}>הוסף חובש</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 
   return (
     <View style={[GlobalStyles.content, GlobalStyles.textDefault]}>
-      {" "}
-      {/* מחילים direction מימין לשמאל */}
       <Text
         style={{
           fontSize: 30,
@@ -43,26 +55,16 @@ const Home = () => {
       >
         שלום {userName}
       </Text>
-      <TouchableOpacity
-        style={{
-          backgroundColor: "orange",
-          paddingVertical: 10,
-          paddingHorizontal: 20,
-          borderRadius: 5,
-          marginBottom: 20,
-          alignSelf: "flex-end", // ליישר את הכפתור לימין
-        }}
-      >
-        <Text style={{ color: "white" }}>כפתור</Text>
-      </TouchableOpacity>
+
       <FlatList
         data={games}
         renderItem={renderGameItem}
         keyExtractor={(item) => item.id.toString()}
         style={{ width: "100%" }}
-        contentContainerStyle={{ direction: "rtl" }} // חשוב לכיוון ה-flatlist
+        contentContainerStyle={{ direction: "rtl" }}
         showsVerticalScrollIndicator={false}
       />
+
       <Navbar />
     </View>
   );

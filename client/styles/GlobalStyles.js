@@ -114,4 +114,12 @@ export const GlobalStyles = StyleSheet.create({
   iconBtn: {
     padding: 10, // רווח סביב האייקון
   },
+  listButton: {
+  backgroundColor: COLORS.primaryAccent,
+  paddingVertical: 12,
+  paddingHorizontal: 20,
+  borderRadius: RADIUS.r2,
+  marginVertical: 10,
+  alignSelf: "center",
+},
 });

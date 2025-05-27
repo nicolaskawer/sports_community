@@ -15,6 +15,7 @@ export const navigations = [
   },
   
   
+  
 ]
 export const games = [
   {
@@ -38,5 +39,6 @@ export const games = [
     location: "סמי עופר",
     medicAvailable: false,
   },
+  { id: "button", type: "button" }
 ];
 ;
