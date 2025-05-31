@@ -5,6 +5,7 @@ import { games } from "../data";
 import { HomeStyles } from "../styles/HomeStyles";
 import React, { useEffect, useState } from "react";
 import { fetchUser } from "../fetch/users";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 const Home = () => {
   const [userName, setUserName] = useState("");
@@ -64,8 +65,6 @@ const Home = () => {
         contentContainerStyle={{ direction: "rtl" }}
         showsVerticalScrollIndicator={false}
       />
-
-      <Navbar />
     </View>
   );
 };

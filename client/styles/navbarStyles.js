@@ -1,6 +1,4 @@
-// navbarStyles.js
 import { StyleSheet } from 'react-native';
-import { COLORS } from './SignUpStyles'; 
 
 export const NavbarStyles = StyleSheet.create({
   navbarContainer: {
@@ -20,5 +18,34 @@ export const NavbarStyles = StyleSheet.create({
   },
   iconBtn: {
     padding: 10,
+  },
+  menuPopup: {
+    position: "absolute",
+    top: 50, // מתחת לכפתור
+    right: 0,
+    backgroundColor: "white",
+    paddingVertical: 5,
+    paddingHorizontal: 0,
+    borderRadius: 5,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    zIndex: 9999,
+    width: 120,
+  },
+  menuItem: {
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: "#eee",
+     
+  
+  },
+  menuItemText: {
+    fontSize: 16,
+    textAlign: "right",
+    color: "black",
   },
 });

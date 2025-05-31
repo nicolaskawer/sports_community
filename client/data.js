@@ -8,7 +8,7 @@ export const navigations = [
     to: "logo", // זה יכול להיות מסך ראשי או סתם ייצוג של הלוגו
   },
   {
-    id: 1,
+    id: "menuButton",
     iconLib: Entypo,
     iconName: "dots-three-vertical", // תפריט של שלוש נקודות מאונכות
     to: "menu", // תוכל לכוון אותו למסך הגדרות או תפריט צד
@@ -41,4 +41,31 @@ export const games = [
   },
   { id: "button", type: "button" }
 ];
+export const actionButtons = [
+  {
+    id: "medic",
+    emoji: "🩺",
+    label: "שיבוץ חובש",
+    screen: "MedicAssignment",
+  },
+  {
+    id: "transport",
+    emoji: "🚌",
+    label: "הסעות",
+    screen: "Transport",
+  },
+  {
+    id: "photo",
+    emoji: "📸",
+    label: "צילום",
+    screen: "Photography",
+  },
+  {
+    id: "equipment",
+    emoji: "💊",
+    label: "ציוד רפואי",
+    screen: "MedicalEquipment",
+  },
+];
+
 ;

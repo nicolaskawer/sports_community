@@ -17,7 +17,7 @@ const FirstInteraction = () => {
 
       <TouchableOpacity
         style={[GlobalStyles.btn, GlobalStyles.btnSecondary]}
-        onPress={() => navigation.navigate("Home")} // שם המסך השני
+        onPress={() => navigation.navigate("App")} // why app u ask? cuz in the navigator the appLayout calld app if u will see
       >
         <Text style={GlobalStyles.btnTextAlt}>התחברות</Text>
       </TouchableOpacity>
