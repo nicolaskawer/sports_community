@@ -13,6 +13,14 @@ export const navigations = [
     iconName: "dots-three-vertical", // תפריט של שלוש נקודות מאונכות
     to: "menu", // תוכל לכוון אותו למסך הגדרות או תפריט צד
   },
+{
+    id: "search",
+    type: "icon",
+    iconLib: Feather,
+    iconName: "search",
+    to: "Search",
+  },
+
   
   
   
@@ -67,5 +75,15 @@ export const actionButtons = [
     screen: "MedicalEquipment",
   },
 ];
+export const people = [
+  {
+    email : "nicolaskawer@gmail.com",
+    password: "12345678"
+  },
+  {
+    email : "d@gmail.com",
+    password: "12345678"
+  }
+]
 
 ;

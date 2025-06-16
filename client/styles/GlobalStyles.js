@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { Directions } from 'react-native-gesture-handler';
 
 export const COLORS = {
   primary: '#ffaa00',
@@ -45,6 +46,7 @@ export const GlobalStyles = StyleSheet.create({
     textAlign: 'right',
     writingDirection: 'rtl', // מוודא שהכתיבה באמת מימין לשמאל
   },
+
   heading: {
     fontSize: SIZES.heading,
     fontWeight: '600',

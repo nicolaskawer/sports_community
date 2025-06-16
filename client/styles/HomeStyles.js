@@ -10,7 +10,7 @@ export const HomeStyles = StyleSheet.create({
   },
   gameCard: {
     backgroundColor: "#eee",
-    padding: 15,
+    padding: 80,
     marginVertical: 8,
     borderRadius: 10,
     width: "90%",
@@ -20,8 +20,6 @@ export const HomeStyles = StyleSheet.create({
     alignItems:'flex-start',
     justifyContent:'center',          
 
-
-    direction:"rtl",    
   },
   gameTitle: {
     fontWeight: "bold",

@@ -35,7 +35,11 @@ const Navbar = () => {
           );
         }
 
+        {
+          /*if (item.id === "")*/
+        }
         if (item.id === "menuButton") {
+          //להוסיף םונקציונליות לחיפוש
           return (
             <View key={item.id} style={{ position: "relative" }}>
               <TouchableOpacity

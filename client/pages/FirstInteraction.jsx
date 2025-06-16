@@ -1,5 +1,4 @@
 import { TouchableOpacity, Text, View } from "react-native";
-import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { GlobalStyles } from "../styles/GlobalStyles";
 
@@ -17,7 +16,7 @@ const FirstInteraction = () => {
 
       <TouchableOpacity
         style={[GlobalStyles.btn, GlobalStyles.btnSecondary]}
-        onPress={() => navigation.navigate("App")} // why app u ask? cuz in the navigator the appLayout calld app if u will see
+        onPress={() => navigation.navigate("SignIn")} // why app u ask? cuz in the navigator the appLayout calld app if u will see
       >
         <Text style={GlobalStyles.btnTextAlt}>התחברות</Text>
       </TouchableOpacity>

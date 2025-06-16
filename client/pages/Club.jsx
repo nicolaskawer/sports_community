@@ -5,7 +5,7 @@ import {
   Ionicons,
   Entypo,
 } from "@expo/vector-icons";
-import { clubStyles } from "../styles/clubStyles";
+import { clubStyles } from "../styles/ClubStyles";
 
 const Club = () => {
   return (

@@ -4,7 +4,7 @@ var router = express.Router();
 
 /* GET home page. */
 
-app.get('/api/clubs/puppeteer',GetAllClubs, async (req, res,next) => {
+router.get('/api/clubs/puppeteer',GetAllClubs, async (req, res,next) => {
   
 });
 
