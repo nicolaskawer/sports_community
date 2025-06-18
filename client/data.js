@@ -1,30 +1,31 @@
-import { AntDesign, FontAwesome, Feather, Entypo } from '@expo/vector-icons';
+import { AntDesign, FontAwesome, Feather, Entypo,  } from '@expo/vector-icons';
+import { Ionicons } from "@expo/vector-icons";
 
 export const navigations = [
+
   {
-    id: 0,
-    iconLib: FontAwesome,
-    iconName: "soccer-ball-o", // כדורגל ללוגו
-    to: "logo", // זה יכול להיות מסך ראשי או סתם ייצוג של הלוגו
+    id: "logo",
+    iconLib: "FontAwesome",
+    iconName: "soccer-ball-o",
+    isStatic: true, // אין ניווט, סתם תצוגה
   },
   {
     id: "menuButton",
-    iconLib: Entypo,
-    iconName: "dots-three-vertical", // תפריט של שלוש נקודות מאונכות
-    to: "menu", // תוכל לכוון אותו למסך הגדרות או תפריט צד
+    iconLib: "Entypo",
+    iconName: "dots-three-vertical",
+    to: "menu",
   },
-{
+  {
     id: "search",
-    type: "icon",
-    iconLib: Feather,
+    iconLib: "Feather",
     iconName: "search",
     to: "Search",
   },
+];
 
-  
-  
-  
-]
+
+
+
 export const games = [
   {
     id: 1,

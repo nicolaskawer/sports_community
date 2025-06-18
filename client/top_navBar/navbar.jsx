@@ -1,33 +1,45 @@
+import React, { useState } from "react";
 import { View, TouchableOpacity, Text } from "react-native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { useMedicRequests } from "../context/MedicRequestContext";
+import MedicRequestsPopup from "../components/MedicRequestsPopup";
+import { FontAwesome, Entypo, Feather, Ionicons } from "@expo/vector-icons";
 import { navigations } from "../data";
 import { NavbarStyles } from "../styles/navbarStyles";
-import { useState } from "react";
-import { useNavigation, useRoute } from "@react-navigation/native";
+
+const iconLibraries = {
+  FontAwesome,
+  Entypo,
+  Feather,
+  Ionicons,
+};
 
 const Navbar = () => {
   const [menuVisible, setMenuVisible] = useState(false);
-  const navigation = useNavigation();
-  const route = useRoute(); // Using useRoute() to check if already on the page.
+  const [showRequestsPopup, setShowRequestsPopup] = useState(false);
 
-  const toggleMenu = () => {
-    setMenuVisible((prev) => !prev);
-  };
+  const navigation = useNavigation();
+  const route = useRoute();
+  const { medicRequests } = useMedicRequests();
+
+  const toggleMenu = () => setMenuVisible((prev) => !prev);
 
   const handleNavigate = (screenName) => {
-    setMenuVisible(false); // סוגר את התפריט
-
-    // לנווט למסך בתוך ה-nested navigator "App"
+    setMenuVisible(false);
     if (route.name !== screenName) {
-      navigation.navigate("App", { screen: screenName }); // why app then , {screen}? because the same scrren name loceted in App(the appLayout calld App and not reffernd to App.js)
+      navigation.navigate("App", { screen: screenName });
     }
   };
 
   return (
     <View style={NavbarStyles.navbarContainer}>
+      {/* Loop through navigation icons */}
       {navigations.map((item) => {
-        const IconComponent = item.iconLib;
+        const IconComponent = iconLibraries[item.iconLib];
 
-        if (item.to === "logo") {
+        if (!IconComponent) return null;
+
+        if (item.id === "logo") {
           return (
             <View key={item.id} style={NavbarStyles.iconBtn}>
               <IconComponent name={item.iconName} size={30} color="black" />
@@ -35,16 +47,13 @@ const Navbar = () => {
           );
         }
 
-        {
-          /*if (item.id === "")*/
-        }
         if (item.id === "menuButton") {
-          //להוסיף םונקציונליות לחיפוש
           return (
             <View key={item.id} style={{ position: "relative" }}>
               <TouchableOpacity
                 style={NavbarStyles.iconBtn}
                 onPress={toggleMenu}
+                activeOpacity={0.7}
               >
                 <IconComponent name={item.iconName} size={30} color="black" />
               </TouchableOpacity>
@@ -70,11 +79,35 @@ const Navbar = () => {
         }
 
         return (
-          <TouchableOpacity key={item.id} style={NavbarStyles.iconBtn}>
+          <TouchableOpacity
+            key={item.id}
+            style={NavbarStyles.iconBtn}
+            onPress={() => handleNavigate(item.to)}
+            activeOpacity={0.7}
+          >
             <IconComponent name={item.iconName} size={30} color="black" />
           </TouchableOpacity>
         );
       })}
+
+      {/* Notification icon */}
+      <TouchableOpacity
+        style={NavbarStyles.iconBtn}
+        onPress={() => setShowRequestsPopup(true)}
+        activeOpacity={0.7}
+      >
+        <Ionicons name="notifications" size={30} color="black" />
+        {medicRequests.length > 0 && (
+          <View style={NavbarStyles.notificationDot} />
+        )}
+      </TouchableOpacity>
+
+      {showRequestsPopup && (
+        <MedicRequestsPopup
+          onClose={() => setShowRequestsPopup(false)}
+          readOnly={route.name !== "Club"} // רק במועדון נוכל לאשר או לדחות
+        />
+      )}
     </View>
   );
 };

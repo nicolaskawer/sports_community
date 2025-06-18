@@ -6,11 +6,46 @@ import {
   Entypo,
 } from "@expo/vector-icons";
 import { clubStyles } from "../styles/ClubStyles";
+import MedicRequestsPopup from "../components/MedicRequestsPopup";
+import { useMedicRequests } from "../context/MedicRequestContext";
+import { useState } from "react";
 
 const Club = () => {
+  const [showRequestsPopup, setShowRequestsPopup] = useState(false);
+
+  const { medicRequests, approveRequest, rejectRequest } = useMedicRequests();
+
+  // useEffect(() => {
+  //   const getClubs = async () => {
+  //     const clubs = await fetchClubs();
+  //     setClubsState(clubs);
+  //   };
+
+  //   getClubs();
+  // }, []);
+  const handleApprove = (requestId) => {
+    approveRequest(requestId);
+  };
+
+  const handleReject = (requestId) => {
+    rejectRequest(requestId);
+  };
+
   return (
     <View style={clubStyles.buttonContainer}>
-      <TouchableOpacity style={clubStyles.button}>
+      {showRequestsPopup && (
+        <MedicRequestsPopup
+          onClose={() => setShowRequestsPopup(false)}
+          medicRequests={medicRequests}
+          onApprove={handleApprove}
+          onReject={handleReject}
+        />
+      )}
+
+      <TouchableOpacity
+        style={clubStyles.button}
+        onPress={() => setShowRequestsPopup(true)}
+      >
         <MaterialIcons name="medical-services" style={clubStyles.icon} />
         <Text style={clubStyles.label}>שיבוץ חובש</Text>
       </TouchableOpacity>
