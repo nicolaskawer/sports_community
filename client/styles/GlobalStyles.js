@@ -124,4 +124,25 @@ export const GlobalStyles = StyleSheet.create({
   marginVertical: 10,
   alignSelf: "center",
 },
+backButton: {
+  alignSelf: "flex-start",
+  marginVertical: 10,
+  paddingVertical: 8,
+  paddingHorizontal: 16,
+  backgroundColor: "#f0f0f0",
+  borderRadius: 8,
+  borderWidth: 1,
+  borderColor: "#ccc",
+  shadowColor: "#000",
+  shadowOffset: { width: 0, height: 1 },
+  shadowOpacity: 0.1,
+  shadowRadius: 2,
+  elevation: 2, // for Android
+},
+
+backButtonText: {
+  fontSize: 16,
+  color: "#333",
+  fontWeight: "500",
+},
 });

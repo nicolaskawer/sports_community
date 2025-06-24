@@ -7,39 +7,42 @@ import SignUp from "../pages/SignUp";
 import SignIn from "../pages/SignIn";
 import AppLayout from "./AppLayout";
 import { MedicRequestProvider } from "../context/MedicRequestContext";
+import { UserProvider } from "../context/UserContext";
 
 const Stack = createNativeStackNavigator();
 
 const Navigator = () => {
   return (
-    <MedicRequestProvider>
-      <ClubProvider>
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName="FirstInteraction">
-            <Stack.Screen
-              name="FirstInteraction"
-              component={FirstInteraction}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="SignUp"
-              component={SignUp}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="SignIn"
-              component={SignIn}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="App"
-              component={AppLayout}
-              options={{ headerShown: false }}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </ClubProvider>
-    </MedicRequestProvider>
+    <UserProvider>
+      <MedicRequestProvider>
+        <ClubProvider>
+          <NavigationContainer>
+            <Stack.Navigator initialRouteName="FirstInteraction">
+              <Stack.Screen
+                name="FirstInteraction"
+                component={FirstInteraction}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="SignUp"
+                component={SignUp}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="SignIn"
+                component={SignIn}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="App"
+                component={AppLayout}
+                options={{ headerShown: false }}
+              />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </ClubProvider>
+      </MedicRequestProvider>
+    </UserProvider>
   );
 };
 

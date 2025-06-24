@@ -1,17 +1,19 @@
 import { Text, View, TextInput, TouchableOpacity, Alert } from "react-native";
 import styles from "../styles/SignInStyles";
 import { useNavigation } from "@react-navigation/native";
-import { people } from "../data";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useUser } from "../context/UserContext";
+import { GlobalStyles } from "../styles/GlobalStyles";
 
 const SignIn = () => {
   const navigation = useNavigation();
 
-  const [formData, setFormData] = useState({
+  const [signInForm, setSignInForm] = useState({
     email: "",
     password: "",
   });
 
+  const { users, setUsers, setCurrentUser } = useUser();
   const [errors, setErrors] = useState({});
 
   const validate = () => {
@@ -19,7 +21,7 @@ const SignIn = () => {
 
     if (
       !/^[a-zA-Z0-9._%+-]+@(gmail|walla|hotmail|yahoo)\.(com|co\.il)$/.test(
-        formData.email
+        signInForm.email
       )
     ) {
       newErrors.email =
@@ -31,40 +33,52 @@ const SignIn = () => {
   };
 
   const handleChange = (name, value) => {
-    setFormData({ ...formData, [name]: value });
+    setSignInForm({ ...signInForm, [name]: value });
     setErrors({ ...errors, [name]: null });
   };
 
   const handleSubmit = () => {
     if (validate()) {
-      const user = people.find(
-        (person) =>
-          person.email === formData.email &&
-          person.password === formData.password
-      );
+      // למצוא משתמש לפי אימייל
+      const matchedUser = users.find((u) => u.email === signInForm.email);
 
-      if (!user) {
-        Alert.alert("שגיאה", "האימייל או הסיסמה שגויים");
+      if (!matchedUser) {
+        Alert.alert("שגיאה", "אימייל לא נמצא במערכת");
         return;
       }
 
-      // ניתוב בהתאם למשתמש
-      if (user.email === "nicolaskawer@gmail.com") {
-        navigation.navigate("App", { screen: "Home" });
-      } else if (user.email === "d@gmail.com") {
+      // לבדוק שהסיסמה תואמת
+      if (matchedUser.password !== signInForm.password) {
+        Alert.alert("שגיאה", "סיסמה שגויה");
+        return;
+      }
+
+      // לשמור את המשתמש הנוכחי
+      setCurrentUser(matchedUser);
+
+      // ניווט לפי תפקיד
+      if (matchedUser.role === "club") {
         navigation.navigate("App", { screen: "Club" });
+      } else {
+        navigation.navigate("App", { screen: "Home" });
       }
     }
   };
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity
+        style={GlobalStyles.backButton}
+        onPress={() => navigation.goBack()}
+      >
+        <Text style={GlobalStyles.backButtonText}>←</Text>
+      </TouchableOpacity>
       <Text style={styles.label}>אימייל</Text>
       <TextInput
         style={styles.inputField}
         placeholder="example@gmail.com"
         keyboardType="email-address"
-        value={formData.email}
+        value={signInForm.email}
         onChangeText={(value) => handleChange("email", value)}
       />
       {errors.email && <Text style={styles.error}>{errors.email}</Text>}
@@ -72,9 +86,9 @@ const SignIn = () => {
       <Text style={styles.label}>סיסמא</Text>
       <TextInput
         style={styles.inputField}
-        placeholder="Password"
+        placeholder="סיסמא"
         secureTextEntry={true}
-        value={formData.password}
+        value={signInForm.password}
         onChangeText={(value) => handleChange("password", value)}
       />
 

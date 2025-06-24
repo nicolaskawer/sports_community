@@ -28,11 +28,6 @@ const SignInStyles = StyleSheet.create({
     marginTop: 25,
     alignItems: "center",
   },
-  buttonText: {
-    color: "#fff",
-    fontWeight: "bold",
-    fontSize: 16,
-  },
 });
 
 export default SignInStyles;

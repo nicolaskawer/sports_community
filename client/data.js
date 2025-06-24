@@ -86,5 +86,22 @@ export const people = [
     password: "12345678"
   }
 ]
+export const medic = [
+  {
+    email : "ni@gmail.com",
+    name : " ניקולס החובש המקצועי",
+    rating :"עושה עבודה יסודית אך יקר"
+  },
+  {
+    email : "n1@gmail.com",
+    name: "דניאל החובש המקמבן",
+    rating :" זול אבל לא עושה עבודה טובה. נ.ב מעשן על ילדים"
+  },
+  {
+        email : "e@gmail.com",
+    name: "סיזאר",
+    rating :"התחיל להתאמן אצל מאמן איגרוף יש פוטנציאל ללמידת חבישה אחרי שיקבל מכות"
+  }
+]
 
 ;
