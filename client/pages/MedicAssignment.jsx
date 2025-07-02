@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const medicAssignment = () => {
+const MedicAssignment = () => {
   return (
     <View>
-      <Text>medicAssignment</Text>
+      <Text>MedicAssignment</Text>
     </View>
   );
 };
 
-export default medicAssignment;
+export default MedicAssignment;
 
 const styles = StyleSheet.create({});

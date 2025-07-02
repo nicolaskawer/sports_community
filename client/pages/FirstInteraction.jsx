@@ -6,7 +6,7 @@ const FirstInteraction = () => {
   const navigation = useNavigation();
 
   return (
-    <View style={{ gap: 16 }}>
+    <View style={{ gap: 18, marginTop: 100, backgroundColor: "red" }}>
       <TouchableOpacity
         style={[GlobalStyles.btn, GlobalStyles.btnPrimary]}
         onPress={() => navigation.navigate("SignUp")} // שם המסך שאליו אתה רוצה לנווט

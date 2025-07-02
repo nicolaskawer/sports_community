@@ -29,26 +29,40 @@ export const navigations = [
 export const games = [
   {
     id: 1,
-    match: "הפועל נגד מכבי",
-    time: "8:00 בבוקר",
+    match: "הפועל תל אביב - מכבי תל אביב",
+    time: "10.8.2025 | 19:00",
     location: "בלומפילד",
     medicAvailable: false, // חסר חובש
   },
   {
     id: 2,
-    match: "גדנע נגד מכבי חיפה",
-    time: "20:30",
-    location: "טדי",
+    match: "גדנע - מכבי חיפה",
+    time: "8.8.2025 | 21:00",
+    location: "תל אביב יפו - כתובת מגרש",
     medicAvailable: true, // חובש זמין
   },
   {
     id: 3,
     match: "מכבי תל אביב נגד הפועל באר שבע",
-    time: "17:00",
-    location: "סמי עופר",
+    time: "1.8.2025 | 17:00",
+    location: "באר שבע - כתובת מגרש",
     medicAvailable: false,
   },
-  { id: "button", type: "button" }
+  {
+    id: 4,
+    match: "הפועל צפרירים - מכבי נתניה",
+    time: "10.10.2025 | 20:30",
+    location: "נתניה - כתובת מגרש",
+    medicAvailable: true, // חובש זמין
+  },
+  {
+    id: 5,
+    match: "מכבי יפו - מכבי פתח תקווה",
+    time: "25.8.2025 | 17:00",
+    location: "יפו - כתובת מגורים",
+    medicAvailable: false,
+  },
+  
 ];
 export const actionButtons = [
   {

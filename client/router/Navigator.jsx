@@ -14,34 +14,32 @@ const Stack = createNativeStackNavigator();
 const Navigator = () => {
   return (
     <UserProvider>
-      <MedicRequestProvider>
-        <ClubProvider>
-          <NavigationContainer>
-            <Stack.Navigator initialRouteName="FirstInteraction">
-              <Stack.Screen
-                name="FirstInteraction"
-                component={FirstInteraction}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="SignUp"
-                component={SignUp}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="SignIn"
-                component={SignIn}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="App"
-                component={AppLayout}
-                options={{ headerShown: false }}
-              />
-            </Stack.Navigator>
-          </NavigationContainer>
-        </ClubProvider>
-      </MedicRequestProvider>
+      <ClubProvider>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="FirstInteraction">
+            <Stack.Screen
+              name="FirstInteraction"
+              component={FirstInteraction}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="SignUp"
+              component={SignUp}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="SignIn"
+              component={SignIn}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="App"
+              component={AppLayout}
+              options={{ headerShown: false }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </ClubProvider>
     </UserProvider>
   );
 };

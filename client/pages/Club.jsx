@@ -9,26 +9,29 @@ import { clubStyles } from "../styles/ClubStyles";
 import MedicRequestsPopup from "../components/MedicRequestsPopup";
 import { useMedicRequests } from "../context/MedicRequestContext";
 import { useState } from "react";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { handleNavigateApp } from "../context/NavigationUtils";
 
 const Club = () => {
   const [showRequestsPopup, setShowRequestsPopup] = useState(false);
 
   const { medicRequests, approveRequest, rejectRequest } = useMedicRequests();
+  const navigation = useNavigation();
+  const route = useRoute();
 
-  // useEffect(() => {
-  //   const getClubs = async () => {
-  //     const clubs = await fetchClubs();
-  //     setClubsState(clubs);
-  //   };
-
-  //   getClubs();
-  // }, []);
   const handleApprove = (requestId) => {
     approveRequest(requestId);
   };
 
   const handleReject = (requestId) => {
     rejectRequest(requestId);
+  };
+
+  const closePopups = () => {
+    setShowRequestsPopup(false);
+  };
+  const handleNavigateA = (screenName) => {
+    handleNavigateApp(navigation, route, screenName, closePopups);
   };
 
   return (
@@ -44,7 +47,7 @@ const Club = () => {
 
       <TouchableOpacity
         style={clubStyles.button}
-        onPress={() => setShowRequestsPopup(true)}
+        onPress={() => handleNavigateA("MedicAssignment")}
       >
         <MaterialIcons name="medical-services" style={clubStyles.icon} />
         <Text style={clubStyles.label}>שיבוץ חובש</Text>

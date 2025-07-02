@@ -1,9 +1,21 @@
-import { Text, View, TextInput, TouchableOpacity, Alert } from "react-native";
+import {
+  KeyboardAvoidingView,
+  ScrollView,
+  TouchableWithoutFeedback,
+  Keyboard,
+  Platform,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
 import styles from "../styles/SignInStyles";
 import { useNavigation } from "@react-navigation/native";
 import { useState, useEffect, useContext } from "react";
 import { useUser } from "../context/UserContext";
 import { GlobalStyles } from "../styles/GlobalStyles";
+import { Image } from "react-native";
 
 const SignIn = () => {
   const navigation = useNavigation();
@@ -11,9 +23,10 @@ const SignIn = () => {
   const [signInForm, setSignInForm] = useState({
     email: "",
     password: "",
+    role: "",
   });
 
-  const { users, setUsers, setCurrentUser } = useUser();
+  const { users, setCurrentUser } = useUser();
   const [errors, setErrors] = useState({});
 
   const validate = () => {
@@ -66,36 +79,65 @@ const SignIn = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        style={GlobalStyles.backButton}
-        onPress={() => navigation.goBack()}
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={{ flex: 1 }}
       >
-        <Text style={GlobalStyles.backButtonText}>←</Text>
-      </TouchableOpacity>
-      <Text style={styles.label}>אימייל</Text>
-      <TextInput
-        style={styles.inputField}
-        placeholder="example@gmail.com"
-        keyboardType="email-address"
-        value={signInForm.email}
-        onChangeText={(value) => handleChange("email", value)}
-      />
-      {errors.email && <Text style={styles.error}>{errors.email}</Text>}
+        <ScrollView
+          contentContainerStyle={styles.container}
+          keyboardShouldPersistTaps="handled"
+        >
+          <View style={styles.logContainer}>
+            <Text style={styles.label}>אימייל</Text>
+            <TextInput
+              style={styles.inputField}
+              placeholder="example@gmail.com"
+              keyboardType="email-address"
+              value={signInForm.email}
+              onChangeText={(value) => handleChange("email", value)}
+            />
+            {errors.email && <Text style={styles.error}>{errors.email}</Text>}
 
-      <Text style={styles.label}>סיסמא</Text>
-      <TextInput
-        style={styles.inputField}
-        placeholder="סיסמא"
-        secureTextEntry={true}
-        value={signInForm.password}
-        onChangeText={(value) => handleChange("password", value)}
-      />
+            <Text style={styles.label}>סיסמא</Text>
+            <TextInput
+              style={styles.inputField}
+              placeholder="סיסמא"
+              secureTextEntry={true}
+              value={signInForm.password}
+              onChangeText={(value) => handleChange("password", value)}
+            />
 
-      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-        <Text style={styles.buttonText}>כניסה</Text>
-      </TouchableOpacity>
-    </View>
+            <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+              <Text style={styles.buttonText}>כניסה</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
+              <Text>לא רשום? הירשם עכשיו</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.socialButtonsContainer}>
+            <TouchableOpacity style={styles.socialButton}>
+              <Image
+                source={require("../assets/icons/gmail.png")}
+                style={styles.socialIcon}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.socialButton}>
+              <Image
+                source={require("../assets/icons/facebook.png")}
+                style={styles.socialIcon}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.socialButton}>
+              <Image
+                source={require("../assets/icons/linkedin.png")}
+                style={styles.socialIcon}
+              />
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </TouchableWithoutFeedback>
   );
 };
 

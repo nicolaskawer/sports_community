@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import { Directions } from 'react-native-gesture-handler';
 
 export const COLORS = {
-  primary: '#ffaa00',
+  primary: '#04773B',
   primaryAccent: '#cc8800',
   backgroundPrimary: '#000000',
   backgroundSecondary: '#ffffff',
@@ -10,6 +10,7 @@ export const COLORS = {
   textMuted: '#777777',
   white: '#ffffff',
   grayBorder: '#000000',
+  red :'#E20105',
 };
 
 export const RADIUS = {
@@ -32,7 +33,6 @@ export const SIZES = {
 export const GlobalStyles = StyleSheet.create({
   appContainer: {
     flex: 1,
-    backgroundColor: 'red',
     position: 'relative',
   },
     content: {
@@ -117,11 +117,12 @@ export const GlobalStyles = StyleSheet.create({
     padding: 10, // רווח סביב האייקון
   },
   listButton: {
-  backgroundColor: COLORS.primaryAccent,
-  paddingVertical: 12,
-  paddingHorizontal: 20,
+  width:"100%",
+  backgroundColor: COLORS.primary,
+  paddingVertical: 11,
+  paddingHorizontal: 18,
   borderRadius: RADIUS.r2,
-  marginVertical: 10,
+  marginVertical: 8,
   alignSelf: "center",
 },
 backButton: {

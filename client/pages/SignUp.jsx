@@ -259,8 +259,18 @@ const SignUp = () => {
               visible={clubModalVisible}
               onRequestClose={() => setClubModalVisible(false)}
             >
-              <View style={styles.modalOverlay}>
-                <View style={styles.modalContent}>
+              <View
+                style={[
+                  styles.modalOverlay,
+                  { textAlign: "right", writingDirection: "rtl" },
+                ]}
+              >
+                <View
+                  style={[
+                    styles.modalContent,
+                    { textAlign: "right", writingDirection: "rtl" },
+                  ]}
+                >
                   <Text style={styles.label}>בחר מועדון</Text>
                   <FlatList
                     data={clubs}
@@ -274,7 +284,14 @@ const SignUp = () => {
                           setClubModalVisible(false);
                         }}
                       >
-                        <Text style={styles.modalItemText}>{item.name}</Text>
+                        <Text
+                          style={[
+                            styles.modalItemText,
+                            { textAlign: "right", writingDirection: "rtl" },
+                          ]}
+                        >
+                          {item.name}
+                        </Text>
                       </TouchableOpacity>
                     )}
                   />

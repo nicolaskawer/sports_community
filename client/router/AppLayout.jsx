@@ -6,6 +6,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "../pages/Home";
 import Club from "../pages/Club";
 import Navbar from "../top_navBar/navbar";
+import ClubsScreen from "../pages/ClubsScreen";
+import MedicAssignment from "../pages/MedicAssignment";
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +18,8 @@ const AppLayout = () => {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Club" component={Club} />
+        <Stack.Screen name="ClubsScreen" component={ClubsScreen} />
+        <Stack.Screen name="MedicAssignment" component={MedicAssignment} />
       </Stack.Navigator>
     </View>
   );

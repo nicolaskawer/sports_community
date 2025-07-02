@@ -3,8 +3,8 @@ import { StyleSheet } from "react-native";
 export const medicRequestsPopupStyles = StyleSheet.create({
   container: {
     position: "absolute",
-    top: 35,
-    right: 0,
+    top: 80,
+    left: 0,
     backgroundColor: "white",
     padding: 10,
     borderRadius: 8,
